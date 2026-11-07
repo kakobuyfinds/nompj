@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<title>Sugargoo Spreadsheet: Funde vergleichen, Größen prüfen</title>
+<meta name="description" content="Sugargoo Spreadsheet auf Deutsch: Kategorien entdecken, Größen und QC-Fotos verstehen sowie Versandkosten einplanen. Mit Checklisten und klaren Antworten.">
+<meta name="theme-color" content="#193e47">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Sugargoo Spreadsheet – Dein Kompass für Modefunde">
+<meta property="og:description" content="Von Sneakern bis Accessoires: Kategorien, Auswahlhilfen und ein verständlicher Leitfaden für deinen Produktvergleich.">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://images.unsplash.com">
+<!--
+Dateiname: index.html
+Eine eigene Canonical-URL erst nach Festlegung der tatsächlichen Veröffentlichungsadresse ergänzen.
+
+Recherchehinweis: Die direkte Google-Ergebnisseite war nicht abrufbar.
+Die folgenden zehn unterschiedlichen Websites wurden über eine alternative
+Websuche recherchiert; ihre Reihenfolge ist keine bestätigte Google-Platzierung.
+Keine Produktzahlen, Preise, Bewertungen oder Rabattversprechen übernommen.
+
+www.sugargoo--spreadsheet.com: Funde, Kategorien, Produktlisten;
+Vollabruf fehlgeschlagen, Suchauszug verfügbar.
+sugargo.net: Kategorien und Vergleichsübersicht.
+www.sheetsugargoo.com: Streetwear und Bekleidungslinks.
+www.sugargooo.com: Kategorien, Produktinformationen und Fragen.
+sugargo.makeup: thematische Modeauswahl und Navigation.
+repsheet.net/spreadsheet/sugargoo: Produktlinks und QC-Fragen.
+sugargootab.com: Größen, Produktfotos und Versandplanung.
+sugargoox.com/en/spreadsheet: Produktvergleich, Filter und Quellenhinweise.
+sugargoo.org: Bekleidung und Zubehör nach Kategorien.
+sugargoo-spreadsheets.org: Einkaufsablauf, Versand und FAQ.
+
+Redaktioneller Schwerpunkt: eigenständige deutsche Entscheidungshilfen
+statt übernommener Werbeaussagen.
+-->
+<style>
+:root{
+  --paper:#f6f4ed;
+  --ink:#193e47;
+  --muted:#53676b;
+  --line:#ced6d2;
+  --accent:#d9f17a;
+  --white:#fff;
+  --radius:18px
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+a{color:inherit;text-underline-offset:4px}
+a:focus-visible,summary:focus-visible{
+  outline:3px solid #426800;
+  outline-offset:5px
+}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3,p,figure{margin:0}
+h1,h2,h3{line-height:1.12;letter-spacing:-.035em}
+h1{font-size:clamp(2.7rem,6.6vw,5.7rem);max-width:12ch}
+h2{font-size:clamp(1.8rem,3.5vw,3rem)}
+h3{font-size:1.3rem}
+p{margin-top:1rem}
+.wrap{width:min(1180px,92%);margin-inline:auto}
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:23px 0;
+  border-bottom:1px solid var(--line)
+}
+.logo{
+  font-size:1.2rem;
+  font-weight:850;
+  text-decoration:none;
+  letter-spacing:-.04em
+}
+.logo span{
+  display:block;
+  font-size:.68rem;
+  letter-spacing:.16em;
+  font-weight:600;
+  text-transform:uppercase
+}
+.top>a:last-child{font-size:.87rem}
+.eyebrow{
+  font-size:.74rem;
+  font-weight:750;
+  letter-spacing:.13em;
+  text-transform:uppercase
+}
+.category-section{padding:28px 0}
+.category-title{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:12px
+}
+.category-title h2{font-size:.84rem;letter-spacing:.02em}
+.category-title span{font-size:.75rem;color:var(--muted)}
+.categories{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px
+}
+.categories a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:53px;
+  padding:11px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:9px;
+  text-decoration:none;
+  font-size:.83rem;
+  font-weight:650
+}
+.categories small{color:var(--muted);font-size:.67rem}
+.categories a:hover{background:var(--accent)}
+.hero{
+  display:grid;
+  grid-template-columns:1.05fr 1fr;
+  gap:30px;
+  padding:24px 0 55px;
+  align-items:center
+}
+.hero .eyebrow{margin-bottom:22px}
+.hero p{max-width:52ch;color:var(--muted)}
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  min-height:49px;
+  padding:12px 23px;
+  background:var(--ink);
+  color:var(--white);
+  border-radius:100px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:.9rem;
+  margin-top:24px
+}
+.button:hover{background:#285b64}
+.hero-photo{
+  background:#e3292e;
+  border-radius:120px 18px 18px 18px;
+  overflow:hidden;
+  position:relative
+}
+.hero-photo img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.hero-photo figcaption{
+  position:absolute;
+  bottom:18px;
+  left:18px;
+  right:18px;
+  background:var(--paper);
+  padding:12px 16px;
+  border-radius:12px;
+  font-size:.77rem
+}
+.answer{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:30px;
+  padding:28px 32px;
+  background:var(--ink);
+  color:white;
+  border-radius:var(--radius)
+}
+.answer p{margin:0;max-width:80ch}
+.answer strong{color:var(--accent)}
+.section{padding:65px 0;border-bottom:1px solid var(--line)}
+.heading{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:27px
+}
+.heading p{max-width:42ch;color:var(--muted);font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.look{min-width:0}
+.look figure{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden
+}
+.look img{width:100%;height:auto;aspect-ratio:1/1;object-fit:contain}
+.look figcaption{
+  padding:14px;
+  border-top:1px solid var(--line);
+  font-size:.78rem
+}
+.look h3{margin-top:17px;font-size:1.06rem}
+.look p{font-size:.88rem;color:var(--muted);margin-top:9px}
+.note{font-size:.78rem;color:var(--muted)}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:42px}
+.columns article{border-top:3px solid var(--ink);padding-top:20px}
+.columns h3{margin:13px 0}
+.columns p,.columns li{color:var(--muted);font-size:.94rem}
+ul,ol{padding-left:21px}
+li+li{margin-top:9px}
+.table-scroll{
+  overflow:auto;
+  margin-top:25px;
+  border:1px solid var(--line);
+  border-radius:12px
+}
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:570px;
+  text-align:left;
+  font-size:.88rem
+}
+caption{
+  text-align:left;
+  padding:16px;
+  font-weight:700;
+  background:#e7eddf
+}
+th,td{
+  padding:15px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top
+}
+thead{background:white}
+tbody tr:last-child td{border:0}
+.guide{display:grid;grid-template-columns:.7fr 1.3fr;gap:45px}
+.guide .eyebrow{margin-bottom:15px}
+.steps{list-style:none;padding:0;margin:0;counter-reset:step}
+.steps li{
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:15px;
+  padding:0 0 22px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:22px;
+  counter-increment:step
+}
+.steps li:before{
+  content:counter(step,decimal-leading-zero);
+  font-size:.8rem;
+  padding-top:3px;
+  font-weight:750
+}
+.steps p{margin-top:8px;font-size:.91rem;color:var(--muted)}
+.faq{max-width:850px;margin:auto}
+.faq h2{margin-bottom:25px}
+details{border-top:1px solid var(--line);padding:19px 0}
+summary{
+  cursor:pointer;
+  font-weight:700;
+  line-height:1.4;
+  padding-right:15px
+}
+details p{font-size:.94rem;color:var(--muted);max-width:75ch}
+.end{
+  background:var(--accent);
+  border-radius:var(--radius);
+  padding:35px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  margin:45px 0
+}
+.end .button{flex-shrink:0;margin:0}
+.end p{font-size:.92rem}
+footer{padding:0 0 35px;color:var(--muted);font-size:.78rem}
+footer p{max-width:100ch}
+.footline{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  border-top:1px solid var(--line);
+  padding-top:20px
+}
+@media(max-width:850px){
+  .categories{grid-template-columns:repeat(3,1fr)}
+  .hero{gap:20px}
+  h1{font-size:3rem}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .answer{grid-template-columns:1fr;gap:12px}
+  .heading{display:block}
+  .guide{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:560px){
+  .top{padding:17px 0}
+  .top>a:last-child{font-size:.75rem}
+  .categories{grid-template-columns:repeat(2,1fr)}
+  .categories a{font-size:.78rem}
+  .category-title span{display:none}
+  .hero{grid-template-columns:1fr;padding-top:12px}
+  .hero h1{max-width:14ch;font-size:3.2rem}
+  .hero-photo{border-top-left-radius:75px}
+  .hero-photo img{aspect-ratio:4/3}
+  .hero .eyebrow{margin-bottom:16px}
+  .section{padding:42px 0}
+  .answer{padding:23px}
+  .columns{grid-template-columns:1fr;gap:30px}
+  .grid{gap:15px 10px}
+  .look figcaption{padding:10px;font-size:.7rem}
+  .look h3{font-size:1rem}
+  .end{display:block;padding:25px}
+  .end .button{margin-top:20px}
+  .footline{flex-direction:column;gap:6px}
+}
+@media(prefers-reduced-motion:no-preference){
+  a{transition:background-color .15s ease}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebPage",
+      "@id":"#webseite",
+      "name":"Sugargoo Spreadsheet: Funde vergleichen, Größen prüfen",
+      "inLanguage":"de",
+      "description":"Ein unabhängiger deutschsprachiger Leitfaden für Kategorien, Größen, Produktfotos und Versandplanung.",
+      "about":{"@type":"Thing","name":"Sugargoo Spreadsheet"},
+      "hasPart":[{"@id":"#ratgeber"},{"@id":"#fragen"}]
+    },
+    {
+      "@type":"Article",
+      "@id":"#ratgeber",
+      "headline":"Sugargoo Anleitung: von der Idee zur prüfbaren Auswahl",
+      "inLanguage":"de",
+      "author":{"@type":"Organization","name":"cafans Redaktion"},
+      "articleBody":"Zuerst die passende Kategorie wählen. Danach Quelle und Variante festhalten, Maße vergleichen und verfügbare Fotos prüfen. Abschließend Artikelpreis, Versand und weitere ausgewiesene Kosten getrennt planen. Diese Seite leitet zu cafans weiter und führt keine Bestellung aus."
+    },
+    {
+      "@type":"FAQPage",
+      "@id":"#fragen",
+      "inLanguage":"de",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"Was ist ein Sugargoo Spreadsheet?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Ein Sugargoo Spreadsheet ist eine geordnete Sammlung von Produktverweisen zur Recherche. Es hilft, Kategorien und Varianten zu vergleichen, ist aber weder ein Echtheitsnachweis noch eine Garantie für Verfügbarkeit."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Wohin führen die Links auf dieser Seite?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Die Kategorie-Links führen zu den jeweils angegebenen cafans-Kategorien. Alle anderen Navigations- und Entdeckungslinks öffnen die Startseite von cafans. Diese Seite bietet keinen direkten Sugargoo-Checkout."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Wie finde ich die passende Größe?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Vergleiche die Maßtabelle des konkreten Angebots mit einem gut passenden Kleidungsstück oder deinen Fußmaßen. Kläre, ob Körper-, Kleidungsstück- oder Innenmaße angegeben sind. Größenbuchstaben allein reichen nicht."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Sind Produktbilder ein Beweis für Echtheit?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Nein. Katalogbilder und QC-Fotos können sichtbare Merkmale zeigen, belegen aber keine Echtheit. Prüfe Herkunft und Nachweise separat. Die Markenbilder dieser Seite dienen ausschließlich der visuellen Orientierung."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Enthält der Artikelpreis schon den Versand?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Das lässt sich nicht aus einer Sammlung ableiten. Prüfe im jeweiligen Angebot, welche Positionen enthalten sind, und plane separat ausgewiesene Versand-, Service- und mögliche Einfuhrkosten ein."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Ist diese Seite offiziell mit Sugargoo oder den Marken verbunden?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Nein. Dies ist ein unabhängiger Ratgeber mit Weiterleitungen zu cafans. Es wird keine offizielle Verbindung zu Sugargoo, Nike, Louis Vuitton, Gucci, Hermès oder Dior behauptet."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/nompj/">
+</head>
+<body>
+<header class="wrap top">
+  <a class="logo" href="https://www.cafans.com" aria-label="cafans Startseite">
+    cafans
+    <span>Mode entdecken · bewusst vergleichen</span>
+  </a>
+  <a href="https://www.cafans.com">Zur Produktauswahl ↗</a>
+</header>
+
+<main class="wrap">
+  <section class="category-section" aria-labelledby="kategorien">
+    <div class="category-title">
+      <h2 id="kategorien">Direkt zur passenden Kategorie</h2>
+      <span>Dein Einstieg bei cafans</span>
+    </div>
+    <nav class="categories" aria-label="Produktkategorien">
+      <a href="https://cafans.com/category-911-Shoes.html"><small>01</small>Schuhe</a>
+      <a href="https://cafans.com/category-912-Hoodies%2FSweaters.html"><small>02</small>Hoodies &amp; Pullover</a>
+      <a href="https://cafans.com/category-913-T-Shirts.html"><small>03</small>T-Shirts</a>
+      <a href="https://cafans.com/category-914-Jackets.html"><small>04</small>Jacken</a>
+      <a href="https://cafans.com/category-915-Pants%2FShorts.html"><small>05</small>Hosen &amp; Shorts</a>
+      <a href="https://cafans.com/category-916-Headwear.html"><small>06</small>Kopfbedeckungen</a>
+      <a href="https://cafans.com/category-917-Sets.html"><small>07</small>Sets</a>
+      <a href="https://cafans.com/category-918-underwear%2Funderpants.html"><small>08</small>Unterwäsche</a>
+      <a href="https://cafans.com/category-919-Jersey.html"><small>09</small>Trikots</a>
+      <a href="https://cafans.com/category-920-Accessories.html"><small>10</small>Accessoires</a>
+    </nav>
+  </section>
+
+  <section class="hero" aria-labelledby="titel">
+    <div>
+      <div class="eyebrow">Der deutsche Fundkompass</div>
+      <h1 id="titel">Sugargoo Spreadsheet</h1>
+      <p>Ein guter Fund beginnt mit einem klaren Vergleich. Entdecke Modekategorien und lerne, wie du Größen, Bilder und Angebotsangaben sinnvoll einordnest.</p>
+      <a class="button" href="https://www.cafans.com">
+        Funde bei cafans entdecken <span aria-hidden="true">↗</span>
+      </a>
+      <p class="note">Unabhängiger Ratgeber · Weiterleitungen zu cafans</p>
+    </div>
+    <figure class="hero-photo">
+      <img
+        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+        width="900"
+        height="900"
+        fetchpriority="high"
+        loading="eager"
+        alt="Roter Nike-Sneaker mit weißem Swoosh vor rotem Hintergrund">
+      <figcaption>Im Fokus: Silhouette, Material und Details – hier am Beispiel eines Nike-Sneakers.</figcaption>
+    </figure>
+  </section>
+
+  <aside class="answer" aria-label="Kurz erklärt">
+    <div class="eyebrow">Die schnelle Antwort</div>
+    <p>Ein <strong>Sugargoo Spreadsheet</strong> ordnet Produktverweise und erleichtert die Recherche. Eine Sammlung ersetzt jedoch keine Prüfung des konkreten Angebots. Auf dieser Seite findest du Auswahlhilfen; die Entdeckungslinks führen zu cafans.</p>
+  </aside>
+
+  <section class="section" aria-labelledby="funde">
+    <div class="heading">
+      <div>
+        <div class="eyebrow">01 / Stil &amp; Details</div>
+        <h2 id="funde">Sugargoo Funde vergleichen</h2>
+      </div>
+      <p>Vier Blickrichtungen für deinen Vergleich. Die Bilder illustrieren Designmerkmale und sind keine Zusage zur Verfügbarkeit bei cafans oder zur Bestellbarkeit über Sugargoo.</p>
+    </div>
+
+    <div class="grid">
+      <article class="look">
+        <figure>
+          <img
+            src="https://nz.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-lv-trainer-sneaker--BL9U6PMI01_PM1_Side%20view.png?hei=500&amp;wid=500"
+            width="500"
+            height="500"
+            loading="lazy"
+            decoding="async"
+            alt="Weißer Louis Vuitton LV Trainer in Seitenansicht">
+          <figcaption>Louis Vuitton · Sneaker als Stilreferenz</figcaption>
+        </figure>
+        <h3>Form vor Größenetikett</h3>
+        <p>Bei einer Suche nach Sugargoo Sneakern zählen Fußlänge, Innenmaße und die konkrete Maßtabelle mehr als eine pauschale EU-Größe.</p>
+      </article>
+
+      <article class="look">
+        <figure>
+          <img
+            src="https://media.gucci.com/style/DarkGray_Center_0_0_700x700/1775839514/875736_4HBKH_9779_001_100_0000_Light-casquette-en-coton-avec-broderie.jpg"
+            width="700"
+            height="700"
+            loading="lazy"
+            decoding="async"
+            alt="Elfenbeinfarbene Gucci-Baseballkappe mit Schriftzug und grün-roter Stickerei">
+          <figcaption>Gucci · Kappe als Stilreferenz</figcaption>
+        </figure>
+        <h3>Passform am Kopf prüfen</h3>
+        <p>Wenn du Sugargoo Caps vergleichen möchtest, notiere Umfang, Verschluss und Schirmform. Ein verstellbarer Riemen sagt wenig über die Kappentiefe aus.</p>
+      </article>
+
+      <article class="look">
+        <figure>
+          <img
+            src="https://www.luxe-em.com/cdn/shop/files/001_3e78aa64-04f3-4ec6-81eb-e3aad7cdb5bc.jpg?v=1759779439&amp;width=500"
+            width="500"
+            height="500"
+            loading="lazy"
+            decoding="async"
+            alt="Orangefarbenes Hermès-Seidentuch mit silberfarbenem Schlüsselmuster">
+          <figcaption>Hermès · Tuch als Stilreferenz</figcaption>
+        </figure>
+        <h3>Muster und Maße zusammen sehen</h3>
+        <p>Für Sugargoo Accessoires mit Muster helfen Gesamtansicht, Detailfoto und Kantenmaß. Entscheide vorher, ob du ein Tuch am Hals, Kopf oder an einer Tasche tragen willst.</p>
+      </article>
+
+      <article class="look">
+        <figure>
+          <img
+            src="https://assets.christiandior.cn/is/image/diorprod/E1742PTCCYD301_E01?wid=500&amp;hei=500&amp;qlt=75"
+            width="500"
+            height="500"
+            loading="lazy"
+            decoding="async"
+            alt="Goldfarbene Dior-Ohrringe mit CD-Motiv und hellen Schmucksteinen">
+          <figcaption>Dior · Schmuck als Stilreferenz</figcaption>
+        </figure>
+        <h3>Kleine Teile, genaue Angaben</h3>
+        <p>Bei der Recherche nach Sugargoo Schmuck sind Abmessungen, Verschluss und ausgewiesene Materialien entscheidend. Ein Foto belegt keine Materialverträglichkeit.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="auswahl">
+    <div class="heading">
+      <div>
+        <div class="eyebrow">02 / Auswahlwissen</div>
+        <h2 id="auswahl">Sugargoo Größenberatung</h2>
+      </div>
+      <p>Vergleiche messbare Eigenschaften. Eine ähnliche Optik bedeutet noch keine gleiche Passform.</p>
+    </div>
+
+    <div class="columns">
+      <article>
+        <div class="eyebrow">Bekleidung / Kurzratgeber</div>
+        <h3>Das passende Maß statt der gewohnten Größe</h3>
+        <p>Wer Sugargoo Hoodies nach Passform oder Sugargoo T-Shirts nach Schnitt sucht, sollte ein eigenes Lieblingsstück flach ausmessen. Vergleiche Brustweite, Länge und Schulterbreite mit der Tabelle des jeweiligen Angebots.</p>
+        <p>Für Sugargoo Pullover mit Größenvergleich ist zusätzlich die Dehnbarkeit interessant. Bei Sugargoo Jacken mit Maßtabelle solltest du Platz für die Kleidung darunter berücksichtigen.</p>
+        <ul>
+          <li>Sugargoo Hosen nach Bundweite auswählen: zusätzlich Innenbeinlänge und Leibhöhe prüfen.</li>
+          <li>Sugargoo Shorts nach Länge vergleichen: Außenlänge und Beinöffnung gemeinsam betrachten.</li>
+          <li>Sugargoo Sets mit getrennten Größen: kontrollieren, ob Oberteil und Hose einzeln gewählt werden können.</li>
+          <li>Sugargoo Trikots nach Schnitt vergleichen: schmaler Sportschnitt und lockerer Alltagsschnitt unterscheiden sich.</li>
+        </ul>
+      </article>
+
+      <article>
+        <div class="eyebrow">Material / Kurzratgeber</div>
+        <h3>Was die Beschreibung wirklich verrät</h3>
+        <p>Bei Sugargoo Kleidung mit Materialangaben helfen konkrete Zusammensetzungen mehr als Begriffe wie „Premium“. Prüfe, ob Angaben zur Faser, zum Futter und zur Pflege vorhanden sind.</p>
+        <p>Eine Recherche nach Sugargoo Unterwäsche mit Materialvergleich sollte auch Schnitt, Größenangaben und die im Angebot genannten Rückgabebedingungen berücksichtigen. Vermute keine Rückgabemöglichkeit.</p>
+        <ul>
+          <li>Sugargoo Caps mit Größenangaben: Umfangbereich und Verstellbarkeit zusammen lesen.</li>
+          <li>Sugargoo Accessoires mit Detailfotos: Kanten, Nähte und Verschlüsse vergrößert ansehen.</li>
+          <li>Sugargoo Sneaker mit Fußlängenvergleich: Fußmaß und tatsächliches Innenmaß unterscheiden.</li>
+          <li>Sugargoo Produktlinks prüfen: auf die ausgewählte Farbe, Größe und Modellvariante achten.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Welche Angaben helfen bei welcher Kategorie?</caption>
+        <thead>
+          <tr>
+            <th scope="col">Kategorie</th>
+            <th scope="col">Vor dem Vergleich notieren</th>
+            <th scope="col">Häufige Unklarheit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Schuhe</td>
+            <td>Fußlänge, Breite, Größenmaßstab</td>
+            <td>Innenmaß und Fußlänge werden verwechselt.</td>
+          </tr>
+          <tr>
+            <td>Hoodies &amp; T-Shirts</td>
+            <td>Brustweite, Länge, gewünschter Schnitt</td>
+            <td>Flache Breite ist kein Körperumfang.</td>
+          </tr>
+          <tr>
+            <td>Hosen &amp; Sets</td>
+            <td>Bund, Innenbeinlänge, Einzelgrößen</td>
+            <td>Oberteil und Hose passen unterschiedlich.</td>
+          </tr>
+          <tr>
+            <td>Kopfbedeckungen &amp; Schmuck</td>
+            <td>Umfang oder Abmessungen, Material, Verschluss</td>
+            <td>Bilder vermitteln keine verlässliche Größe.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section guide" id="ratgeber" aria-labelledby="anleitung">
+    <div>
+      <div class="eyebrow">03 / Kompakter Ablauf</div>
+      <h2 id="anleitung">Sugargoo Anleitung: von der Idee zur prüfbaren Auswahl</h2>
+      <p>Ein kleiner Merkzettel macht deinen Vergleich nachvollziehbar. Diese Seite führt keine Bestellung aus.</p>
+      <a href="https://www.cafans.com" class="button">Auswahl bei cafans öffnen ↗</a>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <div>
+          <h3>Kategorie eingrenzen</h3>
+          <p>Nutze die Kategorien oben. Für ein Sugargoo Spreadsheet auf Deutsch ist ein klarer Ausgangspunkt hilfreicher als eine ungeordnete Sammlung vieler Produktlinks.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Quelle und Variante festhalten</h3>
+          <p>Wenn du Sugargoo Funde nach Kategorien vergleichst, notiere Artikelbezeichnung, Quelle, Farbe und Größe. Beim Sugargoo Weidian-Link prüfen oder Sugargoo Taobao-Link prüfen ist entscheidend, ob der Verweis wirklich zum gesuchten Artikel führt.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Fotos richtig einordnen</h3>
+          <p>Sugargoo QC-Fotos prüfen bedeutet, sichtbare Merkmale mit deiner Auswahl abzugleichen. Für einen Sugargoo Größencheck anhand von Fotos brauchst du lesbare Maßangaben. Katalogbilder und Bilder einer konkreten Bestellung sind unterschiedliche Belege.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Kosten getrennt planen</h3>
+          <p>Wer Sugargoo Versandkosten einschätzen möchte, benötigt Zielort, Paketmaße und Gewicht. Für einen Sugargoo Gesamtpreis vor der Bestellung gehören Artikelpreis und weitere ausgewiesene Kosten auf getrennte Zeilen. Ein Sugargoo Versandvergleich nach Deutschland braucht die aktuellen Bedingungen des jeweiligen Anbieters.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="qc">
+    <div class="columns">
+      <article>
+        <div class="eyebrow">Fotowissen / Fachbeitrag</div>
+        <h2 id="qc">Sugargoo QC-Fotos verstehen</h2>
+        <p>QC steht hier für eine Sichtprüfung anhand von Fotos. Ein scharfes Bild kann Nähte, Etiketten und sichtbare Abweichungen zeigen. Es beweist weder Echtheit noch Haltbarkeit oder Tragekomfort.</p>
+        <p>Beim Sugargoo Materialvergleich mit Produktfotos solltest du auf Licht und Perspektive achten. Farbtöne können je nach Aufnahme und Bildschirm abweichen. Bei fehlenden Maßen ist eine konkrete Nachfrage hilfreicher als eine Schätzung.</p>
+      </article>
+      <article>
+        <div class="eyebrow">Planung / Fachbeitrag</div>
+        <h2>Ein Vergleich, den du später noch verstehst</h2>
+        <p>Für eine Sugargoo Einkaufsliste für Einsteiger reichen wenige Felder: Quelle, Variante, Maße, offene Frage und Kostenstand. Beim Sugargoo Angebote vergleichen ohne Preisfalle zählt, was im angezeigten Betrag tatsächlich enthalten ist.</p>
+        <p>Ein Sugargoo Rückgabecheck vor dem Kauf gehört vor die Bestellung. Prüfe die konkreten Bedingungen und Fristen im jeweiligen Angebot. Diese redaktionelle Übersicht bestätigt weder einzelne Anbieterbedingungen noch eine bestimmte Versandroute.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section faq" id="fragen" aria-labelledby="faq-titel">
+    <div class="eyebrow">04 / Direkt beantwortet</div>
+    <h2 id="faq-titel">Häufige Fragen</h2>
+
+    <details open>
+      <summary>Was ist ein Sugargoo Spreadsheet?</summary>
+      <p>Ein Sugargoo Spreadsheet ist eine geordnete Sammlung von Produktverweisen zur Recherche. Es hilft, Kategorien und Varianten zu vergleichen, ist aber weder ein Echtheitsnachweis noch eine Garantie für Verfügbarkeit.</p>
+    </details>
+    <details>
+      <summary>Wohin führen die Links auf dieser Seite?</summary>
+      <p>Die Kategorie-Links führen zu den jeweils angegebenen cafans-Kategorien. Alle anderen Navigations- und Entdeckungslinks öffnen die Startseite von cafans. Diese Seite bietet keinen direkten Sugargoo-Checkout.</p>
+    </details>
+    <details>
+      <summary>Wie finde ich die passende Größe?</summary>
+      <p>Vergleiche die Maßtabelle des konkreten Angebots mit einem gut passenden Kleidungsstück oder deinen Fußmaßen. Kläre, ob Körper-, Kleidungsstück- oder Innenmaße angegeben sind. Größenbuchstaben allein reichen nicht.</p>
+    </details>
+    <details>
+      <summary>Sind Produktbilder ein Beweis für Echtheit?</summary>
+      <p>Nein. Katalogbilder und QC-Fotos können sichtbare Merkmale zeigen, belegen aber keine Echtheit. Prüfe Herkunft und Nachweise separat. Die Markenbilder dieser Seite dienen ausschließlich der visuellen Orientierung.</p>
+    </details>
+    <details>
+      <summary>Enthält der Artikelpreis schon den Versand?</summary>
+      <p>Das lässt sich nicht aus einer Sammlung ableiten. Prüfe im jeweiligen Angebot, welche Positionen enthalten sind, und plane separat ausgewiesene Versand-, Service- und mögliche Einfuhrkosten ein.</p>
+    </details>
+    <details>
+      <summary>Ist diese Seite offiziell mit Sugargoo oder den Marken verbunden?</summary>
+      <p>Nein. Dies ist ein unabhängiger Ratgeber mit Weiterleitungen zu cafans. Es wird keine offizielle Verbindung zu Sugargoo, Nike, Louis Vuitton, Gucci, Hermès oder Dior behauptet.</p>
+    </details>
+  </section>
+
+  <aside class="end">
+    <div>
+      <h2>Aus Ideen wird eine Auswahl.</h2>
+      <p>Starte mit einer Kategorie und vergleiche die Details des konkreten Angebots.</p>
+    </div>
+    <a class="button" href="https://www.cafans.com">cafans entdecken ↗</a>
+  </aside>
+</main>
+
+<footer class="wrap">
+  <div class="footline">
+    <span>© 2026 cafans · Deutschsprachiger Fundkompass</span>
+    <a href="https://www.cafans.com">Zur cafans-Startseite ↗</a>
+  </div>
+  <p>Unabhängige Information und visuelle Stilreferenzen. Markennamen und Produktbilder kennzeichnen die gezeigten Beispiele; sie begründen keine Partnerschaft, Echtheitsbestätigung oder Verfügbarkeitszusage. Die Rechte an den Marken und Bildern liegen bei den jeweiligen Rechteinhabern.</p>
+</footer>
+</body>
+</html>
